@@ -1,11 +1,20 @@
 package com.github.partition.nonconfscope.rx;
 
-import rx.Observer;
+//import rx.Observer;
+
+import io.reactivex.Observer;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.Disposable;
 
 public abstract class ObserverAdapter<T> implements Observer<T> {
 
   @Override
-  public void onCompleted() {
+  public void onSubscribe(@NonNull Disposable d) {
+
+  }
+
+  @Override
+  public void onComplete() {
 
   }
 

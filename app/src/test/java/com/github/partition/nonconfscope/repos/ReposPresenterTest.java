@@ -13,7 +13,9 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-import rx.subjects.BehaviorSubject;
+import io.reactivex.subjects.BehaviorSubject;
+
+//import rx.subjects.BehaviorSubject;
 
 @RunWith(RobolectricTestRunner.class)
 public class ReposPresenterTest {
@@ -75,7 +77,7 @@ public class ReposPresenterTest {
   public void still_delivers_repos_after_onComplete() throws Exception {
     List<Repo> repos = sampleRepos();
     reposSubject.onNext(repos);
-    reposSubject.onCompleted();
+    reposSubject.onComplete();
 
     sut.setView(viewMock);
 
@@ -85,7 +87,7 @@ public class ReposPresenterTest {
   @Test
   public void still_delivers_errors_after_onComplete() throws Exception {
     reposSubject.onError(new IOException());
-    reposSubject.onCompleted();
+    reposSubject.onComplete();
 
     sut.setView(viewMock);
 
